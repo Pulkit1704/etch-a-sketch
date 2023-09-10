@@ -1,14 +1,24 @@
+.main{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
 
-#canvas{
-    border: 1px solid blue; 
-    position: fixed; 
-    left: 25%;
-    top: 25%;
+}
+
+.control-panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+#canvas{ 
     width: 500px;
-    height: 500px; 
+    height: 500px;
     display: grid; 
+    background-color: #f3f0f0ec;
 }
 
 .box{
-    border: 1px solid black;
+    border: 1px solid rgb(228, 223, 223);
 }

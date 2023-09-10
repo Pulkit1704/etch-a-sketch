@@ -2,11 +2,15 @@ const canvas = document.querySelector("#canvas")
 var isDrawing = false; 
 var box_color = '#000000'; 
 
-const paint_button = document.querySelector(".paint") 
-paint_button.addEventListener('click', changeDrawingStatus)
+function setRandomColor(e){
+    var red = Math.ceil(Math.random() * 255) 
+    var green = Math.ceil(Math.random() * 255)
+    var blue = Math.ceil(Math.random() * 255)
 
-const color_picker = document.querySelector(".color-picker")
-color_picker.addEventListener('input', changeColor) 
+    var color = `#${red}${green}${blue}`
+
+    setColor(color) 
+}
 
 function setColor(color){
     box_color = color 
@@ -49,10 +53,37 @@ function fillColor(e){
     }
 }
 
+var gridSize = 16; 
+function createGrid(){
 
-function main(){
-    addBoxes(16) 
+    var gridSizeLabel = document.querySelector("#grid-size-label") 
+
+    gridSizeLabel.textContent = `${gridSize}x${gridSize}`
+    canvas.textContent = ''; 
+    addBoxes(gridSize) 
 }
 
 
+function main(){ 
+
+    const paint_button = document.querySelector(".paint") 
+    paint_button.addEventListener('click', changeDrawingStatus)
+
+    const color_picker = document.querySelector(".color-picker")
+    color_picker.addEventListener('input', changeColor) 
+
+    const random_color_button =document.querySelector(".random-color")
+    random_color_button.addEventListener('click', setRandomColor) 
+
+    var gridSizeInput = document.querySelector("#grid-size"); 
+    gridSizeInput.addEventListener('input', (e) => {
+        gridSize = e.target.value; 
+        createGrid(); 
+    });
+
+    const reset_button = document.querySelector(".reset")
+    reset_button.addEventListener('click', createGrid); 
+
+    addBoxes(16)
+}
 main() 
