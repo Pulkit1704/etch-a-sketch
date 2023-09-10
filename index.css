@@ -1,6 +1,9 @@
 
 #canvas{
     border: 1px solid blue; 
+    position: fixed; 
+    left: 25%;
+    top: 25%;
     width: 500px;
     height: 500px; 
     display: grid; 
