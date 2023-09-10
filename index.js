@@ -1,4 +1,8 @@
 const canvas = document.querySelector("#canvas") 
+var isDrawing = false; 
+
+const paint_button = document.querySelector(".paint") 
+paint_button.addEventListener('click', changeDrawingStatus)
 
 function addBoxes(gridSize){
 
@@ -10,6 +14,7 @@ function addBoxes(gridSize){
         grid_box.classList.add('box')
 
         grid_box.addEventListener("mouseover", changeColor) 
+        grid_box.addEventListener("mousedown", changeColor) 
         canvas.appendChild(grid_box) 
     }
 
@@ -17,7 +22,19 @@ function addBoxes(gridSize){
 
 addBoxes(16)
 
+function changeDrawingStatus(e){
+    if(isDrawing == false){
+        isDrawing = true; 
+        e.target.style.backgroundColor = "lightgreen"; 
+    }else{
+        isDrawing = false; 
+        e.target.style.backgroundColor = "";
+    }
+}
 
 function changeColor(e){
-    e.target.style.backgroundColor = 'black' 
+
+    if(isDrawing){
+        e.target.style.backgroundColor = 'black'; 
+    }
 }
