@@ -9,6 +9,8 @@ function setRandomColor(e){
 
     var color = `#${red}${green}${blue}`
 
+    e.target.style.backgroundColor = color; 
+    console.log(color) 
     setColor(color) 
 }
 
